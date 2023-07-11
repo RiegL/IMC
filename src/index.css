@@ -7,8 +7,10 @@
 
 body{
   font-family: sans-serif;
+  max-height: 650px;
 }
 
 button{
   cursor:pointer;
 }
+
