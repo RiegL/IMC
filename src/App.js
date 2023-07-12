@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./app.css";
+import { Stack, TextField, Typography } from "@mui/material";
 
 export default function App() {
   const [peso, setPeso] = useState(""); //para digitar o peso/algura e ficar armazenado para depois realizar o calc
@@ -25,9 +26,18 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1>Calculadora IMC</h1>
+      <Typography  sx={{fontSize:[25,35,50] }} >Calculadora IMC</Typography>
+     
       <span>Vamos calcular seu IMC</span>
       <div className="area-input">
+      {/* usado biblioteca mui */}
+
+      <Stack spacing={3}> 
+      <TextField label="Peso Ex: 90" value={peso} onChange={(e) => {setPeso(e.target.value)}}/> 
+      <TextField label="Altura Ex: 190" value={altura} onChange={(e) => {setAltura(e.target.value)}}/>
+      </Stack>
+      
+       {/*  
         <input
           type="text"
           placeholder="Peso em (kg) Ex: 90"
@@ -39,8 +49,8 @@ export default function App() {
           placeholder="Altura em (cm) Ex: 180"
           value={altura}
           onChange={(e) => setAltura(e.target.value)} //tudo que digitamos vai ficar armazenado no value
-        />
-
+        /> */}
+        <br></br>
         <button onClick={calcularIMC}>Calcular</button>
       </div>
 
