@@ -1,12 +1,15 @@
 import { useState } from "react";
 import "./app.css";
 import { Stack, TextField, Typography } from "@mui/material";
+import React from "react";
 
 export default function App() {
   const [peso, setPeso] = useState(""); //para digitar o peso/algura e ficar armazenado para depois realizar o calc
   const [altura, setAltura] = useState("");
 
   const [mensagem, setMensagem] = useState("");
+
+ 
 
   function calcularIMC() {
     //função calcular o IMC
@@ -18,27 +21,44 @@ export default function App() {
     } else if (imc >= 18.6 && imc < 24.9) {
       setMensagem("Você está no peso ideal! Seu IMC é: " + imc.toFixed(2));
     } else if (imc >= 24.9 && imc < 34.9) {
-      alert("Você está levemente acima do peso! Seu IMC é: " + imc.toFixed(2));
+      setMensagem(
+        "Você está levemente acima do peso! Seu IMC é: " + imc.toFixed(2)
+      );
     } else if (imc > 34.9) {
       setMensagem("Cuidado obesidade! Seu IMC é: " + imc.toFixed(2));
     }
   }
 
+
   return (
     <div className="app">
-      <Typography  sx={{fontSize:[35,40,50] }} >Calculadora IMC</Typography>
-     
+      <Typography sx={{ fontSize: [35, 40, 50] }}>Calculadora IMC</Typography>
+
       <span>Vamos calcular seu IMC</span>
       <div className="area-input">
-      {/* usado biblioteca mui */}
+        {/* usado biblioteca mui */}
 
-      <Stack spacing={3}> 
-      <TextField autoFocus label="Peso Ex: 90" value={peso} onChange={(e) => {setPeso(e.target.value)}}/> 
-      <TextField label="Altura Ex: 190" value={altura} onChange={(e) => {setAltura(e.target.value)}}/>
-      <button onClick={calcularIMC}>Calcular</button>
-      </Stack>
-      
-       {/*  
+        <Stack spacing={4}>
+          <TextField
+            autoFocus
+            label="Peso Ex: 90"
+            value={peso}
+            onChange={(e) => {
+              setPeso(e.target.value);
+            }}
+          />
+          <TextField
+            label="Altura Ex: 190"
+            value={altura}
+            onChange={(e) => {
+              setAltura(e.target.value);
+            }}
+          />
+          <button onClick={calcularIMC}>Calcular</button>
+          <button>Limpar</button>
+        </Stack>
+
+        {/*  
         <input
           type="text"
           placeholder="Peso em (kg) Ex: 90"
@@ -60,4 +80,5 @@ export default function App() {
       </div>
     </div>
   );
+      
 }
