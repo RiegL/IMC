@@ -26,15 +26,16 @@ export default function App() {
 
   return (
     <div className="app">
-      <Typography  sx={{fontSize:[25,35,50] }} >Calculadora IMC</Typography>
+      <Typography  sx={{fontSize:[35,40,50] }} >Calculadora IMC</Typography>
      
       <span>Vamos calcular seu IMC</span>
       <div className="area-input">
       {/* usado biblioteca mui */}
 
       <Stack spacing={3}> 
-      <TextField label="Peso Ex: 90" value={peso} onChange={(e) => {setPeso(e.target.value)}}/> 
+      <TextField autoFocus label="Peso Ex: 90" value={peso} onChange={(e) => {setPeso(e.target.value)}}/> 
       <TextField label="Altura Ex: 190" value={altura} onChange={(e) => {setAltura(e.target.value)}}/>
+      <button onClick={calcularIMC}>Calcular</button>
       </Stack>
       
        {/*  
@@ -50,8 +51,6 @@ export default function App() {
           value={altura}
           onChange={(e) => setAltura(e.target.value)} //tudo que digitamos vai ficar armazenado no value
         /> */}
-        <br></br>
-        <button onClick={calcularIMC}>Calcular</button>
       </div>
 
       <h2>{mensagem}</h2>
