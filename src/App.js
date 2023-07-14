@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./app.css";
-import { Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography, colors } from "@mui/material";
 import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Routes from "./routes";
+
+
 
 export default function App() {
   const [peso, setPeso] = useState(""); //para digitar o peso/algura e ficar armazenado para depois realizar o calc
@@ -70,8 +71,12 @@ export default function App() {
                     setLimparMensagem(false);
                   }}
                 />
-                <button onClick={calcularIMC}>Calcular</button>
-                <button onClick={limparMensagemBotao}>Limpar</button>
+                <Button variant="contained" color="success" onClick={calcularIMC}>Calcular</Button>
+                <Button variant="contained" color="error" onClick={limparMensagemBotao}>Limpar</Button>
+                 
+                {/* <button onClick={calcularIMC} color:sucess>Calcular</button> */}
+                {/* <button onClick={limparMensagemBotao} id="limpa">Limpar</button> */}
+                
               </Stack>
               <br></br>
                 <Typography sx={{fontSize:[17]}}>
