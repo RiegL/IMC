@@ -5,6 +5,7 @@ import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import Routes from "./routes";
 
 export default function App() {
   const [peso, setPeso] = useState(""); //para digitar o peso/algura e ficar armazenado para depois realizar o calc
