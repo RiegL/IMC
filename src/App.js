@@ -6,21 +6,21 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
-
-
 export default function App() {
-  const [kilometragem, setKilometragem] = useState(""); //para digitar o peso/algura e ficar armazenado para depois realizar o calc
+  const [kilometragem, setKilometragem] = useState(""); //para digitar o km/combustivel e ficar armazenado para depois realizar o calc
   const [combustivel, setCombustivel] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [limparMensagem, setLimparMensagem] = useState("false"); // estado para limpar a mensagem
 
   function calcularMediaCarro() {
-      const media =  kilometragem / combustivel ;
-
+    if (kilometragem === "" || combustivel === "") {
+      setMensagem("Por favor, insira os valores de quilometragem e combustível.");
+      setLimparMensagem(false);
+    } else {
+      let media = parseFloat(kilometragem) / parseFloat(combustivel);
       setMensagem("Média do seu carro é: " + media.toFixed(2));
-    
-
-    setLimparMensagem(false); // redefinir o estado para false após o cálculo
+      setLimparMensagem(false);
+    }
   }
 
   function limparMensagemBotao() {
@@ -32,7 +32,7 @@ export default function App() {
 
   return (
     <>
-    <CssBaseline />
+      <CssBaseline />
       <Container maxWidth="sm" sx={{ maxHeight: "100vh" }}>
         <Box sx={{ bgcolor: "#fffff", height: "100vh" }}>
           <div className="app">
@@ -46,7 +46,7 @@ export default function App() {
               <Stack spacing={4}>
                 <TextField
                   autoFocus
-                  label="Kilometragem total"
+                  label="Quilometragem total"
                   value={kilometragem}
                   onChange={(e) => {
                     setKilometragem(e.target.value);
@@ -61,17 +61,26 @@ export default function App() {
                     setLimparMensagem(false);
                   }}
                 />
-                <Button variant="contained" color="success" onClick={calcularMediaCarro}>Calcular</Button>
-                <Button variant="contained" color="error" onClick={limparMensagemBotao}>Limpar</Button>
-                 
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={calcularMediaCarro}
+                >
+                  Calcular
+                </Button>
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={limparMensagemBotao}
+                >
+                  Limpar
+                </Button>
+
                 {/* <button onClick={calcularIMC} color:sucess>Calcular</button> */}
                 {/* <button onClick={limparMensagemBotao} id="limpa">Limpar</button> */}
-                
               </Stack>
               <br></br>
-                <Typography sx={{fontSize:[17]}}>
-                  {mensagem}
-                </Typography>
+              <Typography sx={{ fontSize: [14,17] }}>{mensagem}</Typography>
 
               {/*  
         <input
