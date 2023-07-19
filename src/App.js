@@ -32,7 +32,7 @@ export default function App() {
 
   return (
     <>
-      <CssBaseline />
+    <CssBaseline />
       <Container maxWidth="sm" sx={{ maxHeight: "100vh" }}>
         <Box sx={{ bgcolor: "#fffff", height: "100vh" }}>
           <div className="app">
@@ -54,7 +54,7 @@ export default function App() {
                   }}
                 />
                 <TextField
-                  label="litros abastecidos"
+                  label="Litros abastecidos"
                   value={combustivel}
                   onChange={(e) => {
                     setCombustivel(e.target.value);
